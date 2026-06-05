@@ -21,6 +21,22 @@
 
     <h2>Reflection Space</h2>
 
+    <p>
+        Select a challenge below to receive structured guidance and reflection.
+    </p>
+
+</div>
+
+<!-- ✅ SHOW WHAT USER SELECTED -->
+{% if selected %}
+<div class="selected-box">
+    You selected: {{ selected | capitalize }}
+</div>
+{% endif %}
+
+<!-- INPUT FORM -->
+<div class="hero">
+
     <form method="POST">
 
         <select name="challenge" required>
@@ -42,6 +58,7 @@
 
 </div>
 
+<!-- OUTPUT -->
 {% if result %}
 
 <div class="features-container">
