@@ -27,17 +27,17 @@
 
 </div>
 
-<!-- ✅ SHOW WHAT USER SELECTED -->
+<!-- SELECTED BOX -->
 {% if selected %}
 <div class="selected-box">
     You selected: {{ selected | capitalize }}
 </div>
 {% endif %}
 
-<!-- INPUT FORM -->
-<div class="hero">
+<!-- FORM SECTION -->
+<div class="card-section">
 
-    <form method="POST">
+    <form method="POST" class="form-box">
 
         <select name="challenge" required>
             <option value="">-- Select a situation --</option>
@@ -58,37 +58,43 @@
 
 </div>
 
-<!-- OUTPUT -->
+<!-- RESULTS -->
 {% if result %}
 
 <div class="features-container">
 
     <div class="feature-card">
+        <div class="icon">🧠</div>
         <h3>Insight</h3>
         <p>{{ result.insight }}</p>
     </div>
 
     <div class="feature-card">
+        <div class="icon">💭</div>
         <h3>Emotion</h3>
         <p>{{ result.emotion }}</p>
     </div>
 
     <div class="feature-card">
+        <div class="icon">🛠</div>
         <h3>Action</h3>
         <p>{{ result.action }}</p>
     </div>
 
     <div class="feature-card">
+        <div class="icon">🔍</div>
         <h3>Reflection</h3>
         <p>{{ result.reflection }}</p>
     </div>
 
     <div class="feature-card">
+        <div class="icon">🌱</div>
         <h3>Grounding</h3>
         <p>{{ result.grounding }}</p>
     </div>
 
     <div class="feature-card">
+        <div class="icon">✝️</div>
         <h3>Faith</h3>
         <p>{{ result.faith }}</p>
     </div>
