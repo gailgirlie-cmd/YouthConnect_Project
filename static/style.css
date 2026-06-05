@@ -107,3 +107,12 @@ select {
     text-align: center;
     box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
+.feature-card .icon {
+    font-size: 38px;
+    margin-bottom: 10px;
+    display: block;
+    color: #2c3e50;
+}
+.feature-card h3 {
+    margin-top: 5px;
+}
