@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>RootPath</title>
+    <title>RootPath - Youth Guidance Platform</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
 
-<h1>RootPath</h1>
-
+<!-- NAV -->
 <nav>
     <a href="/">Home</a>
     <a href="/dashboard">System</a>
@@ -17,45 +16,61 @@
     <a href="/reflection">Reflection</a>
 </nav>
 
-<div class="hero">
+<!-- HERO SECTION -->
+<div class="landing-hero">
 
-    <h2>Welcome to RootPath</h2>
+    <h1>RootPath</h1>
 
-    <p>A youth personal growth and guidance platform.</p>
+    <h2>A Structured Youth Growth & Reflection Platform</h2>
 
-    <p>Your journey to focus, discipline, and direction starts here.</p>
+    <p>
+        RootPath helps young people manage stress, build discipline,
+        and find clarity through structured reflection and guidance.
+    </p>
+
+    <a href="/dashboard">
+        <button class="cta-button">Enter System →</button>
+    </a>
 
 </div>
 
+<!-- VALUE SECTION -->
 <div class="features-container">
 
     <div class="feature-card">
-        <h3>📅 Build Habits</h3>
-        <p>Develop positive routines and daily practices that help you achieve your goals.</p>
+        <div class="icon">📅</div>
+        <h3>Build Habits</h3>
+        <p>Create structure in your daily life through consistent routines.</p>
     </div>
 
     <div class="feature-card">
-        <h3>🎯 Stay Focused</h3>
-        <p>Learn how to manage distractions, stay committed, and build consistency in your studies, work, and personal life.</p>
+        <div class="icon">🎯</div>
+        <h3>Stay Focused</h3>
+        <p>Reduce distractions and improve concentration on your goals.</p>
     </div>
 
     <div class="feature-card">
-        <h3>🌱 Grow With Purpose</h3>
-        <p>Set meaningful goals and take steady steps toward personal growth, confidence, and direction.</p>
+        <div class="icon">🌱</div>
+        <h3>Grow With Purpose</h3>
+        <p>Develop direction, confidence, and long-term personal clarity.</p>
     </div>
 
     <div class="feature-card">
-        <h3>✝️ Optional Faith Reflection</h3>
-        <p>Explore faith-based encouragement and reflection rooted in Christian values. Spiritual guidance is available as an optional part of your growth journey.</p>
+        <div class="icon">✝️</div>
+        <h3>Optional Reflection</h3>
+        <p>Faith-based encouragement available for spiritual grounding.</p>
     </div>
 
 </div>
 
-<div class="hero">
+<!-- FOOTER STYLE SECTION -->
+<div class="footer-hero">
 
-    <a href="/dashboard">
-        <button>Enter RootPath System →</button>
-    </a>
+    <h3>Your journey starts with awareness</h3>
+
+    <p>
+        Take one step at a time. Reflection is not about perfection — it’s about direction.
+    </p>
 
 </div>
 
