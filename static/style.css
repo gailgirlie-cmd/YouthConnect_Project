@@ -116,3 +116,20 @@ select {
 .feature-card h3 {
     margin-top: 5px;
 }
+.card-section {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.form-box {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+select {
+    width: 250px;
+}
