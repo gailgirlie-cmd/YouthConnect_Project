@@ -17,27 +17,31 @@
     <a href="/reflection">Reflection</a>
 </nav>
 
+<!-- HEADER -->
 <div class="hero">
 
     <h2>Reflection Space</h2>
 
     <p>
-        Select a challenge below to receive structured guidance and reflection.
+        This is a structured space to slow down your thoughts, understand your emotions,
+        and take meaningful next steps without pressure.
     </p>
 
 </div>
 
-<!-- SELECTED BOX -->
+<!-- SELECTED -->
 {% if selected %}
 <div class="selected-box">
     You selected: {{ selected | capitalize }}
 </div>
 {% endif %}
 
-<!-- FORM SECTION -->
+<!-- FORM -->
 <div class="card-section">
 
     <form method="POST" class="form-box">
+
+        <h3>Choose Your Current Challenge</h3>
 
         <select name="challenge" required>
             <option value="">-- Select a situation --</option>
@@ -58,9 +62,21 @@
 
 </div>
 
-<!-- RESULTS -->
+<!-- RESULTS INTRO -->
 {% if result %}
 
+<div class="hero">
+
+    <h2>Your Reflection Path</h2>
+
+    <p>
+        Take a moment to read slowly. You don’t need to fix everything at once.
+        Focus on understanding first.
+    </p>
+
+</div>
+
+<!-- RESULTS GRID -->
 <div class="features-container">
 
     <div class="feature-card">
@@ -71,19 +87,19 @@
 
     <div class="feature-card">
         <div class="icon">💭</div>
-        <h3>Emotion</h3>
+        <h3>Emotional Awareness</h3>
         <p>{{ result.emotion }}</p>
     </div>
 
     <div class="feature-card">
         <div class="icon">🛠</div>
-        <h3>Action</h3>
+        <h3>Next Step</h3>
         <p>{{ result.action }}</p>
     </div>
 
     <div class="feature-card">
         <div class="icon">🔍</div>
-        <h3>Reflection</h3>
+        <h3>Reflection Question</h3>
         <p>{{ result.reflection }}</p>
     </div>
 
@@ -95,9 +111,19 @@
 
     <div class="feature-card">
         <div class="icon">✝️</div>
-        <h3>Faith</h3>
+        <h3>Support Reminder</h3>
         <p>{{ result.faith }}</p>
     </div>
+
+</div>
+
+<!-- END MESSAGE -->
+<div class="hero">
+
+    <p style="font-size: 16px; opacity: 0.8;">
+        You do not need to solve everything today.  
+        You only need to take the next right step.
+    </p>
 
 </div>
 
