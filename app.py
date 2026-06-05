@@ -10,10 +10,6 @@ def home():
 def about():
     return render_template("about.html")
 
-@app.route("/dashboard")
-def dashboard():
-    return render_template("dashboard.html")
-
 @app.route("/guidance")
 def guidance():
     return render_template("guidance.html")
@@ -22,6 +18,12 @@ def guidance():
 def reflection():
     return render_template("reflection.html")
 
+@app.route("/dashboard")
+def dashboard():
+    return render_template("dashboard.html")
+
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    import os
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
