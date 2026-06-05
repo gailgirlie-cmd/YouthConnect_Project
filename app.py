@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
@@ -14,14 +14,28 @@ def about():
 def guidance():
     return render_template("guidance.html")
 
-@app.route("/reflection")
+@app.route("/reflection", methods=["GET", "POST"])
 def reflection():
-    return render_template("reflection.html")
+    selected = None
+    result = None
+
+    if request.method == "POST":
+        selected = request.form.get("challenge")
+
+        result = {
+            "insight": f"Processing {selected}",
+            "emotion": "You may be experiencing emotional pressure.",
+            "action": "Take one small step today.",
+            "reflection": "What is within your control right now?",
+            "grounding": "Pause, breathe, and slow down.",
+            "faith": "You are not alone in this process."
+        }
+
+    return render_template("reflection.html", selected=selected, result=result)
 
 @app.route("/dashboard")
 def dashboard():
     return render_template("dashboard.html")
-
 
 if __name__ == "__main__":
     import os
