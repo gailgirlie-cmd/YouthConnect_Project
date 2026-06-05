@@ -1,45 +1,84 @@
-from flask import Flask, render_template, request
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reflection - RootPath</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
 
-app = Flask(__name__)
+<body>
 
-@app.route("/")
-def home():
-    return render_template("index.html")
+<h1>RootPath Reflection Tool</h1>
 
-@app.route("/about")
-def about():
-    return render_template("about.html")
+<nav>
+    <a href="/">Home</a>
+    <a href="/dashboard">System</a>
+    <a href="/about">About</a>
+    <a href="/guidance">Guidance</a>
+    <a href="/reflection">Reflection</a>
+</nav>
 
-@app.route("/guidance")
-def guidance():
-    return render_template("guidance.html")
+<div class="hero">
 
-@app.route("/reflection", methods=["GET", "POST"])
-def reflection():
-    selected = None
-    result = None
+    <h2>Reflection Space</h2>
 
-    if request.method == "POST":
-        selected = request.form.get("challenge")
+    <form method="POST">
 
-        result = {
-            "insight": f"Processing {selected}",
-            "emotion": "You may be experiencing emotional pressure.",
-            "action": "Take one small step today.",
-            "reflection": "What is within your control right now?",
-            "grounding": "Pause, breathe, and slow down.",
-            "faith": "You are not alone in this process."
-        }
+        <select name="challenge" required>
+            <option value="">-- Select a situation --</option>
+            <option value="procrastination">Procrastination</option>
+            <option value="stress">Stress</option>
+            <option value="fear">Fear</option>
+            <option value="motivation">Motivation</option>
+            <option value="identity">Identity</option>
+            <option value="loneliness">Loneliness</option>
+            <option value="pressure">Pressure</option>
+        </select>
 
-    return render_template("reflection.html", selected=selected, result=result)
+        <br><br>
 
+        <button type="submit">Generate Reflection</button>
 
-@app.route("/dashboard")
-def dashboard():
-    return render_template("dashboard.html")
+    </form>
 
+</div>
 
-if __name__ == "__main__":
-    import os
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)
+{% if result %}
+
+<div class="features-container">
+
+    <div class="feature-card">
+        <h3>Insight</h3>
+        <p>{{ result.insight }}</p>
+    </div>
+
+    <div class="feature-card">
+        <h3>Emotion</h3>
+        <p>{{ result.emotion }}</p>
+    </div>
+
+    <div class="feature-card">
+        <h3>Action</h3>
+        <p>{{ result.action }}</p>
+    </div>
+
+    <div class="feature-card">
+        <h3>Reflection</h3>
+        <p>{{ result.reflection }}</p>
+    </div>
+
+    <div class="feature-card">
+        <h3>Grounding</h3>
+        <p>{{ result.grounding }}</p>
+    </div>
+
+    <div class="feature-card">
+        <h3>Faith</h3>
+        <p>{{ result.faith }}</p>
+    </div>
+
+</div>
+
+{% endif %}
+
+</body>
+</html>
