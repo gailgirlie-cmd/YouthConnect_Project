@@ -1,145 +1,45 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Reflection - RootPath</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
+from flask import Flask, render_template, request
 
-<body>
+app = Flask(__name__)
 
-<h1>RootPath Reflection Tool</h1>
+@app.route("/")
+def home():
+    return render_template("index.html")
 
-<nav>
-    <a href="/">Home</a>
-    <a href="/dashboard">System</a>
-    <a href="/about">About</a>
-    <a href="/guidance">Guidance</a>
-    <a href="/reflection">Reflection</a>
-</nav>
+@app.route("/about")
+def about():
+    return render_template("about.html")
 
-<div class="hero">
+@app.route("/guidance")
+def guidance():
+    return render_template("guidance.html")
 
-    <h2>Reflection Space</h2>
+@app.route("/reflection", methods=["GET", "POST"])
+def reflection():
+    selected = None
+    result = None
 
-    <p>
-        Select a challenge below to receive structured guidance, emotional awareness, and practical next steps.
-    </p>
+    if request.method == "POST":
+        selected = request.form.get("challenge")
 
-</div>
+        result = {
+            "insight": f"Processing {selected}",
+            "emotion": "You may be experiencing emotional pressure.",
+            "action": "Take one small step today.",
+            "reflection": "What is within your control right now?",
+            "grounding": "Pause, breathe, and slow down.",
+            "faith": "You are not alone in this process."
+        }
 
-<!-- INPUT SECTION -->
-<div class="hero">
+    return render_template("reflection.html", selected=selected, result=result)
 
-    <form method="POST">
 
-        <select name="challenge" required>
-            <option value="">-- Select a situation --</option>
-            <option value="procrastination">Procrastination</option>
-            <option value="stress">Stress</option>
-            <option value="fear">Fear</option>
-            <option value="motivation">Motivation</option>
-            <option value="identity">Identity</option>
-            <option value="loneliness">Loneliness</option>
-            <option value="pressure">Pressure</option>
-        </select>
+@app.route("/dashboard")
+def dashboard():
+    return render_template("dashboard.html")
 
-        <br><br>
 
-        <button type="submit">Generate Reflection</button>
-
-    </form>
-
-</div>
-
-<!-- OUTPUT SECTION -->
-{% if selected %}
-
-<div class="hero">
-
-    <h3>Selected Pathway: {{ selected | capitalize }}</h3>
-
-</div>
-
-{% endif %}
-
-{% if result %}
-
-<div class="features-container">
-
-    <div class="feature-card">
-        <div class="icon">🧠</div>
-        <h3>Insight</h3>
-        <p>{{ result.insight }}</p>
-    </div>
-
-    <div class="feature-card">
-        <div class="icon">💭</div>
-        <h3>Emotional Context</h3>
-        <p>{{ result.emotion }}</p>
-    </div>
-
-    <div class="feature-card">
-        <div class="icon">🛠</div>
-        <h3>Action Step</h3>
-        <p>{{ result.action }}</p>
-    </div>
-
-    <div class="feature-card">
-        <div class="icon">🔍</div>
-        <h3>Reflection Prompt</h3>
-        <p>{{ result.reflection }}</p>
-    </div>
-
-    <div class="feature-card">
-        <div class="icon">🌱</div>
-        <h3>Grounding</h3>
-        <p>{{ result.grounding }}</p>
-    </div>
-
-    <div class="feature-card">
-        <div class="icon">✝️</div>
-        <h3>Optional Faith Support</h3>
-        <p>{{ result.faith }}</p>
-    </div>
-
-</div>
-
-{% endif %}
-
-<!-- SUPPORT SECTION -->
-<div class="hero">
-
-    <h2>Support & Guidance</h2>
-
-    <p>
-        If you are struggling, support is available through trusted people, institutions, and guidance services.
-    </p>
-
-</div>
-
-<div class="features-container">
-
-    <div class="feature-card">
-        <h3>💬 Personal Support</h3>
-        <p>Speak to someone you trust such as a friend, mentor, or family member.</p>
-    </div>
-
-    <div class="feature-card">
-        <h3>🏫 Academic Support</h3>
-        <p>Use institutional support services such as student counselling or academic assistance.</p>
-    </div>
-
-    <div class="feature-card">
-        <h3>🧠 Emotional Support</h3>
-        <p>Reach out to professional support services when emotional pressure becomes overwhelming.</p>
-    </div>
-
-    <div class="feature-card">
-        <h3>✝️ Optional Faith Support</h3>
-        <p>Faith-based encouragement is available through spiritual mentors if desired.</p>
-    </div>
-
-</div>
-
-</body>
-</html>
+if __name__ == "__main__":
+    import os
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
